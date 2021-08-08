@@ -46,67 +46,74 @@ public class BaiThucHanh_3 {
         }
     }
 
-    public String nextDate(int day, int month, int year) {
+    public int[] nextDate(int day, int month, int year) {
 
         int monthNext = month + 1;
         int dayNext = day + 1;
         int yearNext = year + 1;
-        String result = "";
+        int[] result = new int[3];
 
         if(isValidityOfDate(day,month,year)) {
         if (isLeapYear(year)) {
             // nam nhuan
             if (day == leapMonthArr[month - 1] && month < 12) {
-                result = "1/" + monthNext + "/" + year;
+                result = new int[]{1, monthNext, year};
             } else if (day == leapMonthArr[month - 1] && month == 12) {
-                result = "1/1" + "/" + yearNext;
+                result = new int[]{1,1,yearNext};
             } else {
-                result = dayNext + "/" + month + "/" + year;
+                result = new int[]{dayNext,month,year};
             }
         } else if (!isLeapYear(year)){
             if (day == monthArr[month - 1] && month < 12) {
-                result = "1/" + monthNext + "/" + year;
+                result = new int[]{1,monthNext,year};
             } else if (day == monthArr[month - 1] && month == 12) {
-                result = "1/1" + "/" + yearNext;
+                result =  new int[]{1,1,yearNext};
             } else {
-                result = dayNext + "/" + month + "/" + year;
+                result =  new int[]{dayNext , month , year};
             }
         }} else {
-            result = "false - maybe the date invalid";
+            result = new int[]{};
         }
         return result;
     }
 
-    public String preDate(int day, int month, int year) {
+    public int[] preDate(int day, int month, int year) {
 
         int monthPre = month - 1;
         int dayPre = day - 1;
         int yearPre = year - 1;
-        String result = "";
+        int[] result = new int[3];
         if(isValidityOfDate(day,month,year)) {
             // ngay truoc do
             if (isLeapYear(year)) {
                 // nam nhuan
                 if (day == 1 && 1 < month && month <= 12) {
-                    result = leapMonthArr[month - 2] + "/" + monthPre + "/" + year;
+                    result = new int[]{leapMonthArr[month - 2], monthPre, year};
                 } else if (day == 1 && month == 1) {
-                    result = leapMonthArr[leapMonthArr.length - 1] + "/" + "12" + "/" + yearPre;
+                    result = new int[]{leapMonthArr[leapMonthArr.length - 1] , 12,yearPre};
                 } else {
-                    result =  dayPre + "/" + month + "/" + year;
+                    result =  new int[]{dayPre ,month , year};
                 }
             } else if (!isLeapYear(year)) {
                 if (day == monthArr[month - 1] && month < 12) {
-                    result = "1/" + monthPre + "/" + year;
+                    result =new int[]{1,monthPre , year};
                 } else if (day == monthArr[month - 1] && month == 12) {
-                    result = "1/1" + "/" + yearPre;
+                    result = new int[]{1,1,yearPre};
                 } else {
-                    result = dayPre + "/" + month + "/" + year;
+                    result = new int[]{dayPre , month, year};
                 }
             }
         }else {
-            result = "false - maybe the date invalid";
+            result = new int[]{};
         }
         return result;
+    }
+
+    public static void print (int[] arr){
+        for(int i = 0 ; i <arr.length;i++){
+            System.out.print(arr[i]+"/");
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -114,14 +121,11 @@ public class BaiThucHanh_3 {
         System.out.println("----------EX 1----------");
         System.out.println(b3.isLeapYear(100));
         System.out.println("----------EX 2----------");
-        System.out.println("Valid/Invalid: "+b3.isValidityOfDate(1, 13, 100));
-        System.out.println("Next day: "+b3.nextDate(1,13,100));
-        System.out.println("Previous day: "+b3.preDate(1,13,100));
-        System.out.println("***");
-        System.out.println("Valid/Invalid: "+b3.isValidityOfDate(29,2,101));
-        System.out.println("Next day: "+b3.nextDate(29,2,101));
-        System.out.println("Previous day: "+b3.preDate(29,2,101));
-//        System.out.println("***");
+        System.out.println("Valid/Invalid: "+b3.isValidityOfDate(1, 12, 100));
+        System.out.print("Next day: ");
+        print(b3.nextDate(1, 12, 100));
+        System.out.print("Previous day: ");
+        print(b3.preDate(1, 12, 100));
 
     }
 }
