@@ -31,6 +31,7 @@ public class BaiThucHanh_3 {
         int dayPre = day-1;
         int yearPre = year-1;
 
+        if(month <= 12){
         if(isLeapYear(year)){
             if(day <= leapMonthArr[month-1]){
                 System.out.println("The date is valid");
@@ -79,6 +80,9 @@ public class BaiThucHanh_3 {
                 System.out.println("The date is not valid");
                 return false;
             }
+        }} else {
+            System.out.println("The date is not valid");
+            return false;
         }
     }
 
@@ -92,5 +96,9 @@ public class BaiThucHanh_3 {
         b3.isValidityOfDate(31,12,96);
         System.out.println("***");
         b3.isValidityOfDate(21,12,96);
+        System.out.println("***");
+        b3.isValidityOfDate(21,13,96);
+        System.out.println("***");
+        b3.isValidityOfDate(29,2,96);
     }
 }
