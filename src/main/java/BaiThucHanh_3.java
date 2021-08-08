@@ -97,8 +97,8 @@ public class BaiThucHanh_3 {
         System.out.println("***");
         b3.isValidityOfDate(21,12,96);
         System.out.println("***");
-        b3.isValidityOfDate(21,0,96);
+        b3.isValidityOfDate(12,13,2020);
         System.out.println("***");
-        b3.isValidityOfDate(29,2,96);
+        b3.isValidityOfDate(31,4,96);
     }
 }
