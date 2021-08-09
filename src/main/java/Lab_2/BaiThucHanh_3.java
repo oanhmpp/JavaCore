@@ -1,3 +1,5 @@
+package Lab_2;
+
 public class BaiThucHanh_3 {
     int monthArr[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     int leapMonthArr[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

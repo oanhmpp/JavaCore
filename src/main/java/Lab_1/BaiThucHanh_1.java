@@ -1,3 +1,5 @@
+package Lab_1;
+
 import java.util.Calendar;
 
 public class BaiThucHanh_1 {

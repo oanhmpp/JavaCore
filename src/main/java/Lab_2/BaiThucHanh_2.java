@@ -1,3 +1,5 @@
+package Lab_2;
+
 import java.util.Locale;
 
 public class BaiThucHanh_2 {
