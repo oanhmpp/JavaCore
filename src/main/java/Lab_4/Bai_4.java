@@ -2,7 +2,7 @@ package Lab_4;
 
 public class Bai_4 {
     // ktra so nguyen to
-    public boolean isPrime(int n) {
+    public static boolean isPrime(int n) {
         if (n > 0) {
             if (n < 2) {
                 return false;
