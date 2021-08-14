@@ -3,7 +3,7 @@ package Lab_5;
 import Lab_4.Bai_4;
 
 public class Bai_2 {
-    // b ktra co phai la mang so nguyen khong
+    // b ktra co phai la mang so nguyen to khong
     public boolean isArrayOfPrimes (int [] arr){
         boolean result = true;
         for (int a:arr ) {

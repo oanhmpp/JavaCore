@@ -28,17 +28,31 @@ public class App {
         return result;
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("n = ");
-        int n = sc.nextInt();
-
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            System.out.format("a[%d] = ", i);
-            arr[i] = sc.nextInt();
+    public int findMin(int[] arr){
+        int min = arr[0];
+        for(int a:arr){
+            if(a<min){
+                min=a;
+            }
         }
-        printArr(arr);
+        return min;
+    }
+
+    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+////        System.out.println("n = ");
+////        int n = sc.nextInt();
+////
+////        int[] arr = new int[n];
+////        for (int i = 0; i < n; i++) {
+////            System.out.format("a[%d] = ", i);
+////            arr[i] = sc.nextInt();
+////        }
+////        printArr(arr);
+
+        App a = new App();
+        int [] arr = new int[]{6,2,3,43,2,4};
+        System.out.println(a.findMin(arr));
     }
 
 
