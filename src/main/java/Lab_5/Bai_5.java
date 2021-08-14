@@ -139,9 +139,6 @@ public class Bai_5 {
         int b = 0;
         int c = 0;
 
-        int temp;
-        int lenght = arr.length;
-
         // tim so la so duong va sap xep chieu giam dan
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > 0) {
