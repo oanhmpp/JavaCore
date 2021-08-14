@@ -120,7 +120,6 @@ public class Bai_5 {
         int temp;
         for (int i = 0; i < arr.length - 1; i++) {
             if (arr[i] > arr[i + 1]) {
-                System.out.println("--------" + arr[i]);
                 temp = arr[i + 1];
                 arr[i + 1] = arr[i];
                 arr[i] = temp;
@@ -133,7 +132,6 @@ public class Bai_5 {
     //đầu mảng giảm dần, kế đến là các số âm
     //tăng dần, cuối cùng là các số 0.
     public int[] sortArrSort(int[] arr) {
-        System.out.println("le" + arr.length);
         int[] arrPositive = new int[numberPositive(arr)];
         int[] arrNegative = new int[numberNegative(arr)];
         int[] arrEuro = new int[arr.length - numberPositive(arr) - numberNegative(arr)];
@@ -162,14 +160,13 @@ public class Bai_5 {
         arrNegative = sortArrIncrease(arrNegative);
 
         arr = mergeArr(arrPositive,arrNegative,arrEuro);
-        System.out.println("lenght" + arr.length);
         return arr;
     }
 
     public static void main(String[] args) {
         Bai_5 b5 = new Bai_5();
         int[] arrA = new int[]{1, 2, 4, 5, 6, 11, 3};
-        int[] arrA2 = new int[]{1, -2, 4, -5, 6,0,0,-6, 11, 3};
+        int[] arrA2 = new int[]{1, 2, 4, 5, 6,0,0,6, 11, 3};
 
         // cau a
         System.out.println("---------***---------");
