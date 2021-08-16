@@ -128,6 +128,13 @@ public class Bai_5 {
         return arr;
     }
 
+    // 4 3 2 1 -5 -4 -2 0 0 0 0
+
+    public static void customSort(int[] arr) {
+        arr[0] = 1;
+        arr[1] = 2;
+    }
+
     // d Sắp xếp mảng sao cho các số dương đứng
     //đầu mảng giảm dần, kế đến là các số âm
     //tăng dần, cuối cùng là các số 0.
@@ -161,6 +168,11 @@ public class Bai_5 {
     }
 
     public static void main(String[] args) {
+        int[] xrr = new int[]{9, 5};
+        customSort(xrr);
+
+        System.out.println(xrr[0] + " " + xrr[1]);
+
         Bai_5 b5 = new Bai_5();
         int[] arrA = new int[]{1, 2, 4, 5, 6, 11, 3};
         int[] arrA2 = new int[]{1, 2, 4, 5, 6,0,0,6, 11, 3};
