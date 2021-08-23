@@ -41,7 +41,7 @@ public class BT {
         return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
     }
 
-    public static long getNumberOfDayFromMonthYear(int month, int year) {
+    public static long getDayFromMonthYear(int month, int year) {
         switch (month) {
             case 1:
             case 3:
@@ -80,8 +80,8 @@ public class BT {
             year++;
         }
         int month = 1;
-        while (day > getNumberOfDayFromMonthYear(month, year)) {
-            day -= getNumberOfDayFromMonthYear(month, year);
+        while (day > getDayFromMonthYear(month, year)) {
+            day -= getDayFromMonthYear(month, year);
             month++;
         }
         return String.format("%02d-%02d-%02d %02d:%02d:%02d", day, month, year, hours, minutes, sec);
