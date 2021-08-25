@@ -95,7 +95,6 @@ public class BT {
         return LocalDateTime.ofEpochSecond(seconds, 0, ZoneOffset.of("+7")); // Múi giờ Việt Nam
     }
 
-
     /**
      * Đếm số ngày tính cả năm nhuận Julian Date
      */
@@ -108,8 +107,8 @@ public class BT {
 
     public static void main(String[] args) {
 
-        long sc1 = BT.convertToTimestamp1(2, 1, 1970, 0, 0, 0);
-        long sc2 = BT.convertToTimestamp2(2, 1, 1970, 0, 0, 0);
+        long sc1 = BT.convertToTimestamp1(2, 1, 1970, 0, 1, 0);
+        long sc2 = BT.convertToTimestamp2(2, 1, 1970, 0, 1, 0);
 
         System.out.println("Manual\t: " + sc1);
         System.out.println("Support\t: " + sc2);
