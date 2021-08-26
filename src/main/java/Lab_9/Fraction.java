@@ -17,20 +17,24 @@ public class Fraction {
     /**
      * Nhập/Xuất phân số
      */
-    public void print() {
+    public String print() {
         if (denominator == 0) {
-            System.out.println("Invalid !!! (Denominator must be greater than 0)");
+            return "Invalid !!! (Denominator must be greater than 0)";
         }
         if (denominator == 1)
-            System.out.println("Fraction by format a/b: " + numerator);
+            return numerator + "";
         else
-            System.out.println("Fraction by format a/b: " + numerator + "/" + denominator);
+            return numerator + "/" + denominator;
     }
 
     /**
      * Tìm ước chung lớn nhất
      */
     public int findUSCLN(int a, int b) {
+        if (a < 0)
+            a *= (-1);
+        if (b < 0)
+            b *= (-1);
         while (a != b) {
             if (a > b) {
                 a -= b;
@@ -53,33 +57,33 @@ public class Fraction {
     /**
      * Tính tổng, hiệu, tích, thương hai phân số
      */
-    public Fraction sumFraction(Fraction f1, Fraction f2) {
-        int a = f1.numerator * f2.denominator + f2.numerator * f1.denominator;
-        int b = f1.denominator * f2.denominator;
+    public Fraction sumFraction(Fraction f2) {
+        int a = this.numerator * f2.denominator + f2.numerator * this.denominator;
+        int b = this.denominator * f2.denominator;
         Fraction result = new Fraction(a, b);
         result.reduceFraction();
         return result;
     }
 
-    public Fraction subFraction(Fraction f1, Fraction f2) {
-        int a = f1.numerator * f2.denominator - f2.numerator * f1.denominator;
-        int b = f1.denominator * f2.denominator;
+    public Fraction subFraction(Fraction f2) {
+        int a = this.numerator * f2.denominator - f2.numerator * this.denominator;
+        int b = this.denominator * f2.denominator;
         Fraction result = new Fraction(a, b);
         result.reduceFraction();
         return result;
     }
 
-    public Fraction multiplicationFraction(Fraction f1, Fraction f2) {
-        int a = f1.numerator * f2.numerator;
-        int b = f1.denominator * f2.denominator;
+    public Fraction multiplicationFraction(Fraction f2) {
+        int a = this.numerator * f2.numerator;
+        int b = this.denominator * f2.denominator;
         Fraction result = new Fraction(a, b);
         result.reduceFraction();
         return result;
     }
 
-    public Fraction divisionFraction(Fraction f1, Fraction f2) {
-        int a = f1.numerator * f2.denominator;
-        int b = f1.denominator * f2.numerator;
+    public Fraction divisionFraction(Fraction f2) {
+        int a = this.numerator * f2.denominator;
+        int b = this.denominator * f2.numerator;
         Fraction result = new Fraction(a, b);
         result.reduceFraction();
         return result;
@@ -88,8 +92,8 @@ public class Fraction {
     /**
      * Kiểm tra phân số tối giản
      */
-    public boolean isReduceFrac(Fraction f) {
-        if (findUSCLN(f.numerator, f.denominator) == 1) {
+    public boolean isReduceFrac() {
+        if (findUSCLN(this.numerator, this.denominator) == 1) {
             return true;
         }
         return false;
@@ -101,8 +105,8 @@ public class Fraction {
     /**
      * Kiểm tra phân số âm hay dương
      */
-    public boolean isNegative(Fraction f) {
-        if (f.numerator < 0 || f.denominator < 0)
+    public boolean isNegative() {
+        if (this.numerator < 0 || this.denominator < 0)
             return true;
         return false;
     }
@@ -110,17 +114,21 @@ public class Fraction {
     /**
      * So sánh hai phân số
      */
-    public boolean isBiggerFrac(Fraction f1, Fraction f2) {
-        if (f1.denominator == f2.denominator) {
-            if (f1.numerator > f2.numerator)
-                return true;
-            return false;
+    public int compare(Fraction f2) {
+        if (this.denominator == f2.denominator) {
+            if (this.numerator > f2.numerator)
+                return 1;
+            else if (this.numerator < f2.numerator)
+                return -1;
+            return 0;
         } else {
-            f1.numerator = f1.numerator*f2.denominator;
-            f2.numerator = f2.numerator*f1.denominator;
-            if (f1.numerator > f2.numerator)
-                return true;
-            return false;
+            this.numerator = this.numerator * f2.denominator;
+            f2.numerator = f2.numerator * this.denominator;
+            if (this.numerator > f2.numerator)
+                return 1;
+            else if (this.numerator < f2.numerator)
+                return -1;
+            return 0;
         }
     }
 
@@ -130,42 +138,54 @@ public class Fraction {
         int num = sc.nextInt();
         System.out.println("Please enter b (denominator): ");
         int deno = sc.nextInt();
-//
+
         Fraction f = new Fraction(num, deno);
-        Fraction f2 = new Fraction();
-//            System.out.println("Print fraction: ");
-//            f.print();
-        System.out.println("Reduce fraction: ");
+        System.out.println("***");
+        System.out.println("Print fraction: ");
+        System.out.println(f.print());
+
+        System.out.println("***");
+        System.out.print("Reduce fraction: ");
         f.reduceFraction();
-        f.print();
+        System.out.println(f.print());
 
-        System.out.println("Sum 2 fraction: ");
-        Fraction sum = f2.sumFraction(new Fraction(2, 3), new Fraction(4, 3));
-        sum.print();
+        System.out.println("***");
+        System.out.print("Sum 2 fraction: ");
+        Fraction sum = f.sumFraction(new Fraction(4, 5));
+        System.out.println(sum.print());
 
-        System.out.println("Subtraction 2 fraction: ");
-        Fraction sub = f2.subFraction(new Fraction(8, 3), new Fraction(4, 3));
-        sub.print();
+        System.out.println("***");
+        System.out.print("Subtraction 2 fraction: ");
+        Fraction sub = f.subFraction(new Fraction(4, 5));
+        System.out.println(sub.print());
 
-        System.out.println("Multiplication 2 fraction: ");
-        Fraction mul = f2.multiplicationFraction(new Fraction(2, 3), new Fraction(4, 2));
-        mul.print();
+        System.out.println("***");
+        System.out.print("Multiplication 2 fraction: ");
+        Fraction mul = f.multiplicationFraction(new Fraction(4, 2));
+        System.out.println(mul.print());
 
-        System.out.println("Division 2 fraction: ");
-        Fraction div = f2.divisionFraction(new Fraction(2, 3), new Fraction(4, 2));
-        div.print();
+        System.out.println("***");
+        System.out.print("Division 2 fraction: ");
+        Fraction div = f.divisionFraction(new Fraction(4, 2));
+        System.out.println(div.print());
 
+        System.out.println("***");
         System.out.print("Is reduce?? : ");
-        System.out.println(f2.isReduceFrac(new Fraction(2, 3)));
+        System.out.println(f.isReduceFrac());
 
+        System.out.println("***");
         System.out.print("Is negative?? : ");
-        System.out.println(f2.isNegative(new Fraction(2, 3)));
+        System.out.println(f.isNegative());
 
-        System.out.println("Compare 2 fraction: ");
-        boolean compare = f2.isBiggerFrac(new Fraction(2, 2), new Fraction(4, 3));
-        if (compare)
-            System.out.println("Fraction 1 bigger than fraction 2");
-            System.out.println("Fraction 2 bigger than fraction 1");
+        System.out.println("***");
+        System.out.print("Compare 2 fraction: ");
+        Fraction f1 = new Fraction(3, 4);
+        int compare = f.compare(f1);
+        if (compare == 1)
+            System.out.format("%s > %s", f.print(), f1);
+        else if (compare == -1)
+            System.out.format("%s < %s", f.print(), f1.print());
+        System.out.format("%s = %s", f.print(), f1.print());
 
     }
 }

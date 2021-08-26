@@ -36,27 +36,26 @@ public class Monomial {
     /**
      * Tính tích, thương hai đơn thức
      */
-    public Monomial multiplication(Monomial m1, Monomial m2) {
+    public Monomial multiplication(Monomial m2) {
         Monomial result = new Monomial();
-        result.a = m1.a * m2.a;
-        result.xn = m1.xn + m2.xn;
+        result.a = this.a * m2.a;
+        result.xn = this.xn + m2.xn;
         return result;
     }
 
-    public Monomial division(Monomial m1, Monomial m2) {
+    public Monomial division( Monomial m2) {
         Monomial result = new Monomial();
-        result.a = m1.a / m2.a;
-        result.xn = m1.xn - m2.xn;
+        result.a = this.a / m2.a;
+        result.xn = this.xn - m2.xn;
         return result;
     }
 
     /**
      * Tính đạo hàm cấp 1 của đơn thức
      */
-    public Monomial firstDerivative(Monomial m) {
-        m.a *= (m.xn);
-        m.xn -= 1;
-        return m;
+    public void firstDerivative() {
+        this.a *= (this.xn);
+        this.xn -= 1;
     }
 
     /**
@@ -84,9 +83,8 @@ public class Monomial {
         System.out.println();
         System.out.println("***");
 
-        Monomial m2 = new Monomial();
         Monomial m3 = new Monomial(4, 2);
-        Monomial m4 = m2.multiplication(m, m3);
+        Monomial m4 = m.multiplication( m3);
         System.out.print("Multiplication: (");
         m.print();
         System.out.print(")*(");
@@ -96,7 +94,7 @@ public class Monomial {
 
         System.out.println();
         System.out.println("***");
-        Monomial m5 = m2.division(m, m3);
+        Monomial m5 = m.division(m3);
         System.out.print("Division (n1>n2) : (");
         m.print();
         System.out.print(")/(");
@@ -110,7 +108,8 @@ public class Monomial {
         System.out.print("First degree derivative of ");
         m6.print();
         System.out.print(": ");
-        m2.firstDerivative(m6).print();
+        m.firstDerivative();
+        m.print();
 
         System.out.println();
         System.out.println("***");
