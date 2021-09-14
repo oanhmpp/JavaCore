@@ -38,12 +38,9 @@ public class Lecturer_CH extends Lecturers{
         return new Lecturer_CH(name,email,address,phone,timeTeach,salary,hoursInGeneral);
     }
 
+    // sử dụng toString
     public String printListLecturer(ArrayList<Lecturers> list) {
         String re = "Name\t\t\t\t\tEmail\t\t\t\t\tAddress\t\t\t\tPhone\t\t\t\tTime teach\tSalary\t\tHours in general\n";
-        for (int i = 0; i < list.size(); i++) {
-            re += i+1 + ". " + list.get(i).name + "\t\t" + list.get(i).email + "\t\t" + list.get(i).address +
-                    "\t\t\t\t\t" + list.get(i).phone + "\t\t\t" + list.get(i).timeTeach +"\t"+list.get(i).sa;+"\n";
-        }
         return re;
     }
 
