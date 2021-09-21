@@ -13,6 +13,9 @@ public class Triangle extends Figure {
         this.c = c;
     }
 
+    public Triangle() {
+    }
+
     @Override
     public Figure enterFigure(Scanner sc) {
         Point p = new Point();

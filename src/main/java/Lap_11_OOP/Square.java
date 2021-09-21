@@ -11,6 +11,9 @@ public class Square extends Figure {
         this.width = width;
     }
 
+    public Square() {
+    }
+
     @Override
     public Figure enterFigure(Scanner sc) {
         Point p = new Point();

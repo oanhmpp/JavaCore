@@ -17,6 +17,9 @@ public class Circle extends Figure {
         this.radius = radius;
     }
 
+    public Circle() {
+    }
+
     @Override
     public Figure enterFigure(Scanner sc) {
         Point p = new Point();
