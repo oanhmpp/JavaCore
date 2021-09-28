@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Circle extends Figure {
     private Point centerPoint;
     private double radius;
-
+    Point p = new Point();
     public Circle(ArrayList<Figure> list, Point centerPoint, double radius) {
         this.centerPoint = centerPoint;
         this.radius = radius;
@@ -22,7 +22,7 @@ public class Circle extends Figure {
 
     @Override
     public Figure enterFigure(Scanner sc) {
-        Point p = new Point();
+
         System.out.print("Center point x(a,b): ");
         centerPoint = p.export(sc.nextLine());
         System.out.print("Radius: ");
@@ -30,6 +30,10 @@ public class Circle extends Figure {
         return new Circle(centerPoint, radius);
     }
 
+    @Override
+    public String toString(){
+        return "[Circle] - Center point: (" + p.getX()+","+p.getY()+")\tRadius: "+radius;
+    }
     public Point getCenterPoint() {
         return centerPoint;
     }

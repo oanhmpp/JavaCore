@@ -1,28 +1,30 @@
 package Lap_11_OOP;
 
-import Lap_10_OOP.Lecturer_CH;
-import Lap_10_OOP.Lecturer_TG;
-import Lap_10_OOP.Lecturers;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    //    public static String toString(ArrayList<Figure> list){
+//
+//    }
     public static void main(String[] args) {
         ArrayList<Figure> list = new ArrayList<>();
+        ArrayList<Figure> listCircle = new ArrayList<>();
+        ArrayList<Figure> listRectangular = new ArrayList<>();
+        ArrayList<Figure> listSquare = new ArrayList<>();
+        ArrayList<Figure> listTriangle = new ArrayList<>();
         Figure f = new Rectangular();
 //        f.enterFigure(sc);
 //        list = f.enterFigure(sc);
-        System.out.println(list.size());
 
-        Figure l ;
+        Figure l;
         /**
          * Nhập thông tin
          * */
         Scanner sc = new Scanner(System.in);
         String number = "";
-        list.add(new Square(new Point(3,4),12));
-        while (!number.equals(0)){
+//        list.add(new Square(new Point(3, 4), 12));
+        do {
             System.out.println("***************************************************");
             System.out.println("*****************Please select actions:************************");
             System.out.println("** 1. Enter Circle                                           **");
@@ -38,13 +40,15 @@ public class Main {
             System.out.println("** 11. Find the type of trainer with the highest gross salary.**");
             System.out.println("** 0. Exit                                                   **");
             System.out.println("***************************************************************");
-            number  = sc.nextLine();
-            switch (number){
+            number = sc.nextLine();
+
+            switch (number) {
                 case "0":
                     break;
                 case "1":
                     l = new Circle();
                     l = l.enterFigure(sc);
+                    listCircle.add(l);
                     list.add(l);
                     break;
                 case "2":
@@ -66,10 +70,16 @@ public class Main {
                     System.out.println(list.toString());
                     break;
                 case "6":
+                    for (int i = 0; i < listCircle.size(); i++) {
+                        System.out.println(i++ + "_" + listCircle.get(i).toString());
+                    }
                     break;
                 default:
                     System.out.println("Please enter again !! Input is not true !!");
                     break;
-            }}
+            }
+        } while (!number.equals("0"));
+        System.out.println(list.size());
+        System.out.println(listCircle.size());
     }
 }

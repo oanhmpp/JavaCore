@@ -1,5 +1,7 @@
 package Lap_11_OOP;
 
+import java.util.Scanner;
+
 public class Point extends Figure{
     private double x;
     private double y;
@@ -35,5 +37,10 @@ public class Point extends Figure{
             System.out.println("You must enter true format !!");
         }
         return new Point(x,y);
+    }
+
+    @Override
+    public Figure enterFigure(Scanner sc) {
+        return null;
     }
 }
